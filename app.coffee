@@ -39,6 +39,3 @@ App.listsController = Ember.ArrayProxy.create
     list = App.List.createRecord subject: subject
     lists = document.getElementById('lists-area')
     @pushObject list
-
-  pushObject: (item) ->
-    @._super item

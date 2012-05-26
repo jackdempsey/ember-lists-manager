@@ -41,9 +41,6 @@
       });
       lists = document.getElementById('lists-area');
       return this.pushObject(list);
-    },
-    pushObject: function(item) {
-      return this._super(item);
     }
   });
 
