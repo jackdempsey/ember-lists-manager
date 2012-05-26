@@ -13,35 +13,20 @@
     <script src="app.js"></script>
 </head>
 <body>
-    <!-- <script type="text/x-handlebars">-->
-    <!--     <div id="frm">-->
-    <!--         <b>Load Pictures matching tag: </b>-->
-    <!--         {{view App.SearchTextField placeholder="Twitter username" valueBinding="App.tweetsController.username"}}-->
-    <!--         <button {{action "loadTweets" target="App.tweetsController"}}>Go!</button>-->
-    <!--     </div>-->
-    <!--     <div id="content">-->
-    <!--         <div id="recent">-->
-    <!--             <h3>Recent Users</h3>-->
-    <!--             <ol>-->
-    <!--                 {{#each App.recentUsersController.reverse}}-->
-    <!--                     <li>-->
-    <!--                         <a href="#" title="view again" {{action "searchAgain" target="App.recentUsersController"}}>{{this}}</a> - -->
-    <!--                         <a href="#" title="remove" {{action "removeUser" target="App.recentUsersController"}}>X</a>-->
-    <!--                     </li>-->
-    <!--                 {{/each}}-->
-    <!--             </ol>-->
-    <!--         </div>-->
-    <!--         <div id="tweets">-->
-    <!--           <h3>Pictures</h3>-->
-    <!--           <ul>-->
-    <!--               {{#each App.tweetsController}}-->
-    <!--                   <li>-->
-    <!--                       <img {{bindAttr src="text"}} />-->
-    <!--                   </li>-->
-    <!--               {{/each}}-->
-    <!--           </ul>-->
-    <!--         </div>-->
-    <!--     </div>-->
-    <!-- </script>-->
+     <script type="text/x-handlebars">
+      {{#view id="create-list"}}
+        {{view App.CreateListView id="new-list" placeholder="Type List Name Here"}}
+      {{/view}}
+
+      {{#view id="lists-area"}}
+
+        {{#view id="lists"}}
+          {{#collection id="list-names" contentBinding="App.listsController" tagName="ul"}}
+            {{content.subject}}
+          {{/collection}}
+        {{/view}}
+
+      {{/view}}
+     </script>
 </body>
 </html>

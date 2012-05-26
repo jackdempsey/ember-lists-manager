@@ -12,7 +12,11 @@ App.store = DS.Store.create
 
 # Models
 App.List = DS.Model.extend
+  subject: DS.attr 'string'
   listItems: DS.hasMany 'App.ListItem'
+  #listChanged: (->
+    #console.log "list changed!"
+  #).observes "subject"
 
 App.ListItem = DS.Model.extend
   subject: DS.attr 'string'
@@ -21,6 +25,20 @@ App.ListItem = DS.Model.extend
 
 
 # Views
+App.CreateListView = Ember.TextField.extend
+  insertNewline: ->
+    value = @get 'value'
+    if value
+      App.listsController.createList value
+      @set 'value', ''
 
 # Controllers
+App.listsController = Ember.ArrayProxy.create
+  content: []
+  createList: (subject) ->
+    list = App.List.createRecord subject: subject
+    lists = document.getElementById('lists-area')
+    @pushObject list
 
+  pushObject: (item) ->
+    @._super item
